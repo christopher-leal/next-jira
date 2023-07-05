@@ -1,12 +1,8 @@
-import { Button } from "@mui/material";
 import { NextPage } from "next";
+import { Layout } from "../components/layouts";
 
 const HomePage: NextPage = () => {
-  return (
-    <div>
-      <Button variant="contained">Hello World</Button>
-    </div>
-  );
+  return <Layout>gola</Layout>;
 };
 
 export default HomePage;
