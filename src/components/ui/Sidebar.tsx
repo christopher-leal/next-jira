@@ -9,12 +9,16 @@ import {
 } from "@mui/material";
 import InboxIcon from "@mui/icons-material/Inbox";
 import StarIcon from "@mui/icons-material/Star";
+import { useContext } from "react";
+import { UIContext } from "../../context";
 
 const menuItems = ["Inbox", "Starred"];
 
 export const Sidebar = () => {
+  const { isSideMenuOpen, closeSidebar } = useContext(UIContext);
+
   return (
-    <Drawer anchor="left" open={true} onClose={() => {}}>
+    <Drawer anchor="left" open={isSideMenuOpen} onClose={closeSidebar}>
       <Box sx={{ width: 250 }}>
         <Box sx={{ padding: "5px 10px" }}>
           <Typography variant="h4">Menu</Typography>

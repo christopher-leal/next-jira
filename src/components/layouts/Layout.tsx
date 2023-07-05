@@ -11,6 +11,7 @@ export const Layout: FC<Props> = ({ title = "Next Jira", children }) => {
   return (
     <Box sx={{ flexFlow: 1 }}>
       <Head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
         <title>{title}</title>
       </Head>
       <Navbar />
