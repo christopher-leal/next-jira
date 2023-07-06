@@ -1,13 +1,13 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useContext, useState } from "react";
-import { EntriesContext } from "../../context";
+import { EntriesContext, UIContext } from "../../context";
 import SaveIcon from "@mui/icons-material/Save";
 import AddIcon from "@mui/icons-material/Add";
 
 export const NewEntry = () => {
   const { addEntry } = useContext(EntriesContext);
+  const { setIsAddingEntry, isAddingEntry } = useContext(UIContext);
 
-  const [isAdding, setIsAdding] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [isInputTouched, setIsInputTouched] = useState(false);
 
@@ -18,14 +18,14 @@ export const NewEntry = () => {
   };
 
   const resetFields = () => {
-    setIsAdding(false);
+    setIsAddingEntry(false);
     setInputValue("");
     setIsInputTouched(false);
   };
 
   return (
     <Box sx={{ marginBottom: 2, paddingX: 1 }}>
-      {isAdding ? (
+      {isAddingEntry ? (
         <>
           <TextField
             fullWidth
@@ -48,7 +48,7 @@ export const NewEntry = () => {
             <Button
               variant="outlined"
               color="error"
-              onClick={() => setIsAdding(false)}
+              onClick={() => resetFields()}
             >
               Cancel
             </Button>
@@ -67,7 +67,7 @@ export const NewEntry = () => {
           startIcon={<AddIcon />}
           fullWidth
           variant="outlined"
-          onClick={() => setIsAdding(true)}
+          onClick={() => setIsAddingEntry(true)}
         >
           Add entry
         </Button>
