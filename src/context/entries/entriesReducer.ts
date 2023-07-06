@@ -1,8 +1,10 @@
+import { Entry } from "../../interfaces";
 import { EntriesState } from "./EntriesProvider";
 
 type ActionType =
   | {
-      type: "";
+      type: "Entries - Add entry";
+      payload: Entry;
     }
   | {
       type: "h";
@@ -12,9 +14,10 @@ export const entriesReducer = (
   action: ActionType
 ): EntriesState => {
   switch (action.type) {
-    case "":
+    case "Entries - Add entry":
       return {
         ...state,
+        entries: [...state.entries, action.payload],
       };
 
     default:
