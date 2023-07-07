@@ -10,6 +10,10 @@ type UIType =
   | {
       type: "UI - set is adding entry";
       payload: boolean;
+    }
+  | {
+      type: "UI - set is dragging entry";
+      payload: boolean;
     };
 
 export const uiReducer = (state: UIState, action: UIType): UIState => {
@@ -28,6 +32,11 @@ export const uiReducer = (state: UIState, action: UIType): UIState => {
       return {
         ...state,
         isAddingEntry: action.payload,
+      };
+    case "UI - set is dragging entry":
+      return {
+        ...state,
+        isDraggingEntry: action.payload,
       };
 
     default:

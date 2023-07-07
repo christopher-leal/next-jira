@@ -1,4 +1,4 @@
-import { Entry } from "../../interfaces";
+import { Entry, EntryStatus } from "../../interfaces";
 import { EntriesContext, entriesReducer } from "./";
 import { FC, useReducer } from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -25,11 +25,15 @@ export const EntriesProvider: FC<Props> = ({ children }) => {
       status: "pending",
     };
 
-    dispatch({ type: "Entries - Add entry", payload: entry });
+    dispatch({ type: "Entries - add entry", payload: entry });
+  };
+
+  const updateEntry = (entry: Entry): void => {
+    dispatch({ type: "Entries - update entry", payload: entry });
   };
 
   return (
-    <EntriesContext.Provider value={{ ...state, addEntry }}>
+    <EntriesContext.Provider value={{ ...state, addEntry, updateEntry }}>
       {children}
     </EntriesContext.Provider>
   );
